@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Travel Manager</string>
+    <string name="menu_app">Приложение</string>
+    <string name="menu_about_app">О приложении</string>
+</resources>

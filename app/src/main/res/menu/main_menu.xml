@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/menu_app">
+        <menu>
+            <item
+                android:id="@+id/about_app"
+                android:title="@string/menu_about_app" />
+        </menu>
+    </item>
+
+</menu>
