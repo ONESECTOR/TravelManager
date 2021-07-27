@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.GravityCompat
+import androidx.navigation.fragment.findNavController
 import com.sector.travelmanager.R
 import com.sector.travelmanager.databinding.FragmentMainBinding
 
@@ -31,6 +32,10 @@ class MainFragment : Fragment() {
 
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             true
+        }
+
+        binding.btnNext.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_firstFragment)
         }
 
         return binding.root
