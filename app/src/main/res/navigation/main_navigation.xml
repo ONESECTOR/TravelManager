@@ -3,24 +3,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.sector.travelmanager.fragments.main.MainFragment"
-        android:label="MainFragment"
-        tools:layout="@layout/fragment_main" >
+        android:id="@+id/listFragment"
+        android:name="com.sector.travelmanager.fragments.states.StatesFragment"
+        android:label="ListFragment"
+        tools:layout="@layout/fragment_list">
         <action
-            android:id="@+id/action_mainFragment_to_firstFragment"
-            app:destination="@id/firstFragment" />
+            android:id="@+id/action_listFragment_to_attractionsFragment"
+            app:destination="@id/attractionsFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_listFragment_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment" />
     </fragment>
     <fragment
-        android:id="@+id/firstFragment"
-        android:name="com.sector.travelmanager.fragments.list.FirstFragment"
-        android:label="FirstFragment"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/attractionsFragment"
+        android:name="com.sector.travelmanager.fragments.attractions.AttractionsFragment"
+        android:label="AttractionsFragment"
+        tools:layout="@layout/fragment_attractions" >
         <action
-            android:id="@+id/action_firstFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_attractionsFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+        <argument
+            android:name="currentState"
+            app:argType="com.sector.travelmanager.object.State" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.sector.travelmanager.fragments.splash_screen.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.sector.travelmanager.fragments.about.AboutAppFragment"
+        android:label="AboutAppFragment"
+        tools:layout="@layout/fragment_about_app" >
+        <action
+            android:id="@+id/action_aboutAppFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
 </navigation>

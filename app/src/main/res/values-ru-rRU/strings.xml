@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Travel Manager</string>
+    <!-- Main menu -->
     <string name="menu_app">Приложение</string>
     <string name="menu_about_app">О приложении</string>
+    <string name="menu_change_theme">Сменить тему</string>
+    <string name="menu_choose_language">Выберите язык</string>
+
+    <!--List fragment-->
+    <string name="states_label">Соединенные Штаты</string>
+    <string name="states_label_description">Изучите все красоты Америки!</string>
+
+    <!--Attractions fragment-->
+    <string name="attractions_label">Достопримечательности</string>
+    <string name="attractions_label_description">Узнайте больше об этом Штате!</string>
+
+    <!--Content descriptions-->
+    <string name="open_menu">Открыть меню</string>
+
+    <!--Choose theme dialog-->
+    <string name="light_theme">Светлая</string>
+    <string name="dark_theme">Темная</string>
+    <string name="system_default_theme">Системная</string>
+    <string name="choose_theme_dialog_title">Выберите тему</string>
+
+    <!--Choose language dialog-->
+    <string name="choose_language_dialog_title">Выберите язык</string>
+    <string name="english_language">Английский</string>
+    <string name="russian_language">Русский</string>
+
+    <!--About app fragment-->
+    <string name="description_first_paragraph">Планируете путешествие в Соединённые Штаты Америки?
+        Или же хотите просто узнать больше про эту прекрасную страну?
+        Добро пожаловать в Travel Manager!
+        \n\nВы можете ознакомиться с каждым Штатом Америки
+        и более детально изучить наиболее популярные достопримечательности
+        или же просто красивые места каждого Штата.
+    </string>
+
+    <string name="description_second_paragraph">
+        Каждое окно выполнено в элегантном чёрно-белом стиле,
+        которое дополняется красочными изображениями как самих штатов,
+        так и их достопримечательностей.
+        \n\nНадеюсь, что вы получите удовольствие от использования моего приложения.
+    </string>
+
+    <string name="description_third_paragraph">С уважением, разработчик Travel Manager!</string>
+    <string name="i_got_it">Понятно!</string>
 </resources>

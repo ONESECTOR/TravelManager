@@ -1,3 +1,7 @@
 package com.sector.travelmanager.`object`
 
-data class Attraction(val name: String = "", val image: String = "")
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+class Attraction(val name: String = "", val image: String = ""): Parcelable

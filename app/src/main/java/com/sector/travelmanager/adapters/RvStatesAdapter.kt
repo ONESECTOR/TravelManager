@@ -1,33 +1,41 @@
 package com.sector.travelmanager.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.sector.travelmanager.R
 import com.sector.travelmanager.`object`.State
+import com.sector.travelmanager.databinding.ItemStateBinding
+import com.sector.travelmanager.fragments.states.StatesFragmentDirections
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.rv_state_list.view.*
+import kotlinx.android.synthetic.main.item_state.view.*
 
 class RvStatesAdapter(private var stateList: List<State>): RecyclerView.Adapter<RvStatesAdapter.MyViewHolder>() {
+    constructor(): this(emptyList())
 
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+    inner class MyViewHolder(val binding: ItemStateBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.rv_state_list, parent, false))
+        return MyViewHolder(ItemStateBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        val currentItem = stateList[position]
+
         with(holder) {
             with(stateList[position]) {
+                binding.tvState.text = this.name
+                binding.tvTerrain.text = this.terrain
+
                 Picasso.with(itemView.context)
                     .load(this.image)
-                    .into(itemView.ibState, object: Callback {
+                    .fit()
+                    .into(binding.ibState, object: Callback {
                         override fun onSuccess() {
-                            holder.itemView.progressBar.setBackgroundColor(Color.BLACK)
-                            holder.itemView.progressBar.visibility = View.GONE
+                            binding.progressBar.visibility = View.GONE
                         }
 
                         override fun onError() {
@@ -35,7 +43,10 @@ class RvStatesAdapter(private var stateList: List<State>): RecyclerView.Adapter<
                         }
                     })
 
-                itemView.tvState.text = this.name
+                itemView.ibState.setOnClickListener {
+                    val action = StatesFragmentDirections.actionListFragmentToAttractionsFragment(currentItem)
+                    itemView.findNavController().navigate(action)
+                }
             }
         }
     }

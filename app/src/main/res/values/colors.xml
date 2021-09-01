@@ -8,8 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="new_black">#1c1e20</color>
-    <color name="new_white">#F8F8F8</color>
-    <color name="again_black">#151719</color>
-    <color name="new_black2">#23262b</color>
+    <color name="main_color">#121212</color>
+    <color name="background">#ECECEC</color>
+    <color name="text_primary">#121212</color>
+    <color name="text_secondary">#696969</color>
+    <color name="button">#121212</color>
+    <color name="menu_header">#121212</color>
+    <color name="background_menu">#ECECEC</color>
+    <color name="text_in_recyclerview">#121212</color>
+    <color name="progress_bar">#121212</color>
+    <color name="card_view">#f0f0f0</color>
 </resources>

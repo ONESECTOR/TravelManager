@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_color">#ECECEC</color>
+    <color name="background">#121212</color>
+    <color name="text_primary">#ECECEC</color>
+    <color name="text_secondary">#696969</color>
+    <color name="button">#ECECEC</color>
+    <color name="menu_header">#ECECEC</color>
+    <color name="background_menu">#121211</color>
+    <color name="text_in_recyclerview">#ECECEC</color>
+    <color name="progress_bar">#ECECEC</color>
+    <color name="card_view">#060000</color>
+</resources>

@@ -2,13 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
+    <item
+        android:id="@+id/about_app"
+        android:icon="@drawable/ic_info"
+        android:title="@string/menu_about_app" />
 
-    <item android:title="@string/menu_app">
-        <menu>
-            <item
-                android:id="@+id/about_app"
-                android:title="@string/menu_about_app" />
-        </menu>
-    </item>
+    <item
+        android:id="@+id/change_theme"
+        android:icon="@drawable/ic_theme_day_night"
+        android:title="@string/menu_change_theme" />
 
+    <item
+        android:id="@+id/choose_language"
+        android:icon="@drawable/ic_language"
+        android:title="@string/menu_choose_language" />
 </menu>
