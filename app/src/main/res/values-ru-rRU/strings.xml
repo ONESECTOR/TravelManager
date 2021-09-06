@@ -7,7 +7,7 @@
     <string name="menu_choose_language">Выберите язык</string>
 
     <!--List fragment-->
-    <string name="states_label">Соединенные Штаты</string>
+    <string name="states_label">Соединённые Штаты</string>
     <string name="states_label_description">Изучите все красоты Америки!</string>
 
     <!--Attractions fragment-->
@@ -19,7 +19,7 @@
 
     <!--Choose theme dialog-->
     <string name="light_theme">Светлая</string>
-    <string name="dark_theme">Темная</string>
+    <string name="dark_theme">Тёмная</string>
     <string name="system_default_theme">Системная</string>
     <string name="choose_theme_dialog_title">Выберите тему</string>
 

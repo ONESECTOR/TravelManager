@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
@@ -14,12 +13,13 @@
         android:layout_height="wrap_content"
         android:background="@color/card_view">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ibAttraction"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:alpha="0.87"
             android:background="@color/card_view"
+            android:transitionName="image_attraction"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,6 +45,7 @@
             android:fontFamily="@font/taylor_sans_bold"
             android:textColor="@color/text_in_recyclerview"
             android:textSize="22sp"
+            android:transitionName="text_attraction"
             app:layout_constraintStart_toStartOf="@id/ibAttraction"
             app:layout_constraintTop_toBottomOf="@id/ibAttraction" />
 

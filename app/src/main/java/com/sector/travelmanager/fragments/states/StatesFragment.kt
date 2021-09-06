@@ -1,7 +1,9 @@
 package com.sector.travelmanager.fragments.states
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,7 +23,6 @@ import com.sector.travelmanager.preferences.ThemePreferences
 import android.os.Parcelable
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.yariksoffice.lingver.Lingver
 import kotlinx.android.synthetic.main.fragment_list.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -43,11 +44,17 @@ class StatesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListBinding.inflate(inflater, container, false)
+        initLayout()
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         checkTheme()
         initDatabase()
         getStates()
-        initLayout()
 
         binding.ibMenu.setOnClickListener {
             openMenu()
@@ -63,7 +70,6 @@ class StatesFragment : Fragment() {
             }
         })*/
 
-        return binding.root
     }
 
     private fun initLayout() {
@@ -74,12 +80,15 @@ class StatesFragment : Fragment() {
         databaseReferenceStates?.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    val stateListTemp = ArrayList<State>()
+
                     for (stateSnapshot in snapshot.children) {
                         val state = stateSnapshot.getValue(State::class.java)
 
-                        statesList.add(state!!)
+                        stateListTemp.add(state!!)
                     }
 
+                    statesList = stateListTemp
                     rvAdapter = RvStatesAdapter(statesList)
                     binding.rvStates.adapter = rvAdapter
                 }
@@ -141,6 +150,11 @@ class StatesFragment : Fragment() {
     private fun chooseThemeDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle(resources.getString(R.string.choose_theme_dialog_title))
+
+        //val dialog2 = Dialog(requireContext())
+        //dialog2.setContentView(R.layout.theme_layout_dialog)
+        //dialog2.window?.setBackgroundDrawableResource(R.color.transparent)
+        //dialog2.show()
 
         val themes = arrayOf(
             resources.getString(R.string.light_theme),

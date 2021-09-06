@@ -1,11 +1,13 @@
 package com.sector.travelmanager.fragments.attractions
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import com.sector.travelmanager.fragments.attractions.AttractionsFragmentDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +29,8 @@ class AttractionsFragment : Fragment() {
 
     private val args by navArgs<AttractionsFragmentArgs>()
     private  var reference: String = ""
+
+    private lateinit var recyclerViewAdapter: RvAttractionsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +55,11 @@ class AttractionsFragment : Fragment() {
         _binding = null
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     private fun showListFragment() {
         findNavController().navigate(R.id.action_attractionsFragment_to_listFragment)
     }
@@ -69,16 +78,24 @@ class AttractionsFragment : Fragment() {
         dbRefAttraction.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    val attractionsListTemp = ArrayList<Attraction>()
                     for (attractionSnapshot in snapshot.children) {
                         val attraction = attractionSnapshot.getValue(Attraction::class.java)
 
-                        attractionsList.add(attraction!!)
+                        attractionsListTemp.add(attraction!!)
                     }
 
-                    rvAdapter = RvAttractionsAdapter(attractionsList)
-                    binding.rvAttractions.adapter = rvAdapter
+                    attractionsList = attractionsListTemp //It is made so that the elements in RecyclerView are not duplicated
 
-                    rvAdapter.notifyDataSetChanged()
+                    rvAdapter = RvAttractionsAdapter(attractionsList)
+                    /*rvAdapter.listener =  object : RvAttractionsAdapter.ItemClickListener {
+                        override fun onItemClickListener(item: Attraction, imageView: ImageView) {
+                            val extras = FragmentNavigatorExtras(imageView to item.image)
+
+                            val action = AttractionsFragmentDirections.actionAttractionsFragmentToDescriptionFragment()
+                        }
+                    }*/
+                    binding.rvAttractions.adapter = rvAdapter
                 }
             }
 

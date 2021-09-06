@@ -1,11 +1,18 @@
 package com.sector.travelmanager.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.view.ViewCompat
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.sector.travelmanager.R
 import com.sector.travelmanager.`object`.Attraction
+import com.sector.travelmanager.fragments.attractions.AttractionsFragmentDirections
 import com.squareup.picasso.Callback
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
@@ -20,6 +27,8 @@ class RvAttractionsAdapter(private var attractionsList: List<Attraction>): Recyc
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val currentItem = attractionsList[position]
+
         with(holder) {
             with(attractionsList[position]) {
                 itemView.tvNameOfAttraction.text = this.name
@@ -37,6 +46,15 @@ class RvAttractionsAdapter(private var attractionsList: List<Attraction>): Recyc
 
                         }
                     })
+
+                itemView.ibAttraction.setOnClickListener {
+                    val extras = FragmentNavigatorExtras(
+                        itemView.ibAttraction to currentItem.image,
+                        itemView.tvNameOfAttraction to currentItem.name)
+
+                    val action = AttractionsFragmentDirections.actionAttractionsFragmentToDescriptionFragment(currentItem)
+                    itemView.findNavController().navigate(action, extras)
+                }
             }
         }
     }

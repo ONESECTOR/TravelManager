@@ -34,6 +34,9 @@
         <argument
             android:name="currentState"
             app:argType="com.sector.travelmanager.object.State" />
+        <action
+            android:id="@+id/action_attractionsFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
@@ -52,5 +55,17 @@
         <action
             android:id="@+id/action_aboutAppFragment_to_listFragment"
             app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.sector.travelmanager.description.DescriptionFragment"
+        android:label="fragment_description"
+        tools:layout="@layout/fragment_description" >
+        <argument
+            android:name="currentAttraction"
+            app:argType="com.sector.travelmanager.object.Attraction" />
+        <action
+            android:id="@+id/action_descriptionFragment_to_attractionsFragment"
+            app:destination="@id/attractionsFragment" />
     </fragment>
 </navigation>

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/dialog_background.xml" value="0.16905537459283387" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/ic_arrow_back.xml" value="0.2351851851851852" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.16905537459283387" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/ic_info.xml" value="0.16905537459283387" />
@@ -11,9 +12,14 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/ic_theme_day_night.xml" value="0.16905537459283387" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/rectangle.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/rv_box.xml" value="0.1707236842105263" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/title_description_layout.xml" value="0.16905537459283387" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/title_dialog.xml" value="0.16905537459283387" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_about_app.xml" value="0.264" />
-        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_attractions.xml" value="0.264" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_attractions.xml" value="0.2" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_description.xml" value="0.176" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_description_motion_scene_end.xml" value="0.176" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_description_motion_scene_start.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_list.xml" value="0.21516754850088182" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_splash_screen.xml" value="0.264" />
@@ -22,6 +28,9 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/menu_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/rv_attractions_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/rv_state_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/test.xml" value="0.176" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/theme_layout_dialog.xml" value="0.16052631578947368" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/title_dialog.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/xml/root_preferences.xml" value="0.25416666666666665" />
       </map>

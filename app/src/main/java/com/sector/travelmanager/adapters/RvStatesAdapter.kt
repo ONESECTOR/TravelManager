@@ -22,7 +22,6 @@ class RvStatesAdapter(private var stateList: List<State>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
         val currentItem = stateList[position]
 
         with(holder) {
