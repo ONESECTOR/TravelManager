@@ -1,9 +1,7 @@
 package com.sector.travelmanager.fragments.states
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,9 +20,6 @@ import com.sector.travelmanager.databinding.FragmentListBinding
 import com.sector.travelmanager.preferences.ThemePreferences
 import android.os.Parcelable
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_list.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class StatesFragment : Fragment() {
@@ -151,11 +146,6 @@ class StatesFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle(resources.getString(R.string.choose_theme_dialog_title))
 
-        //val dialog2 = Dialog(requireContext())
-        //dialog2.setContentView(R.layout.theme_layout_dialog)
-        //dialog2.window?.setBackgroundDrawableResource(R.color.transparent)
-        //dialog2.show()
-
         val themes = arrayOf(
             resources.getString(R.string.light_theme),
             resources.getString(R.string.dark_theme),
@@ -213,14 +203,10 @@ class StatesFragment : Fragment() {
         builder.setSingleChoiceItems(languages, checkedItem) {dialog, which ->
             when(which) {
                 0 -> {
-                    //Lingver.getInstance().setLocale(requireContext(), language)
-                    //setNewLocale(LANGUAGE_ENGLISH, LANGUAGE_ENGLISH_COUNTRY)
                     dialog.dismiss()
                 }
 
                 1 -> {
-                    //Lingver.getInstance().setLocale(requireContext(), language)
-                    //setNewLocale(LANGUAGE_RUSSIAN, LANGUAGE_RUSSIAN_COUNTRY)
                     dialog.dismiss()
                 }
             }
@@ -229,10 +215,6 @@ class StatesFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
     }
-
-    /*private fun setNewLocale(language: String, country: String) {
-        Lingver.getInstance().setLocale(requireContext(), language, country)
-    }*/
 
     /*private fun getLastPositionFromRecyclerView() {
         val statePrefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())

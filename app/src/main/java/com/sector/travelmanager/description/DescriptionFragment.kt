@@ -1,5 +1,6 @@
 package com.sector.travelmanager.description
 
+import android.os.AsyncTask
 import android.os.Bundle
 import android.transition.TransitionInflater
 import androidx.fragment.app.Fragment
@@ -9,11 +10,16 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.sector.travelmanager.databinding.FragmentDescriptionBinding
 import com.squareup.picasso.Picasso
+import org.json.JSONObject
+import java.net.URL
 
 class DescriptionFragment : Fragment() {
     private lateinit var binding: FragmentDescriptionBinding
 
     private val args by navArgs<DescriptionFragmentArgs>()
+
+    val city = "volgograd, ru"
+    val apiKey = "214dc88e981d47bfaaf90939ee82d9b4"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,11 +40,34 @@ class DescriptionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getArgs()
+
+        WeatherTask().execute()
+    }
+
+    inner class WeatherTask(): AsyncTask<String, Void, String>() {
+        override fun doInBackground(vararg params: String?): String {
+
+            return URL("https://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&appid=$apiKey").readText(
+                Charsets.UTF_8
+            )
+        }
+
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+
+            val jsonObj = JSONObject(result!!)
+            val main = jsonObj.getJSONObject("main")
+
+            val temp = main.getString("temp")+"°C"
+
+            binding.tvTemperature.text = temp
+        }
     }
 
     private fun getArgs() {
         binding.apply {
             tvAttraction.text = args.currentAttraction.name
+
             Picasso.with(requireContext())
                 .load(args.currentAttraction.image)
                 .into(ivAttraction)

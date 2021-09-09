@@ -21,10 +21,14 @@ class SplashScreenFragment : Fragment() {
     ): View {
         _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
 
-        Handler(Looper.getMainLooper()).postDelayed({
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.postDelayed({
             findNavController().navigate(R.id.action_splashScreenFragment_to_listFragment)
         }, 3000)
-
-        return binding.root
     }
 }

@@ -19,11 +19,15 @@ class AboutAppFragment : Fragment() {
     ): View {
         _binding = FragmentAboutAppBinding.inflate(inflater, container, false)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.btnIGotIt.setOnClickListener {
             navigateToListFragment()
         }
-
-        return binding.root
     }
 
     private fun navigateToListFragment() {

@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.navigation.fragment.FragmentNavigatorExtras
-import com.sector.travelmanager.fragments.attractions.AttractionsFragmentDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +14,6 @@ import com.sector.travelmanager.R
 import com.sector.travelmanager.`object`.Attraction
 import com.sector.travelmanager.adapters.RvAttractionsAdapter
 import com.sector.travelmanager.databinding.FragmentAttractionsBinding
-import kotlinx.android.synthetic.main.fragment_attractions.*
 
 class AttractionsFragment : Fragment() {
     private var _binding: FragmentAttractionsBinding? = null
@@ -37,15 +33,6 @@ class AttractionsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAttractionsBinding.inflate(inflater, container, false)
-        binding.rvAttractions.layoutManager = LinearLayoutManager(requireContext())
-
-        initDatabase()
-        getArgs(reference)
-        getCurrentState()
-
-        binding.btnBack.setOnClickListener {
-            showListFragment()
-        }
 
         return binding.root
     }
@@ -58,6 +45,16 @@ class AttractionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.rvAttractions.layoutManager = LinearLayoutManager(requireContext())
+
+        initDatabase()
+        getArgs(reference)
+        getCurrentState()
+
+        binding.btnBack.setOnClickListener {
+            showListFragment()
+        }
     }
 
     private fun showListFragment() {
