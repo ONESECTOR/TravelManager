@@ -10,18 +10,18 @@
     <string name="menu_choose_language">Choose language</string>
     <string name="footer_text" translatable="false">Travel Manager, 2021</string>
 
-    <!--List fragment-->
+    <!-- List fragment -->
     <string name="states_label">United States</string>
     <string name="states_label_description">Explore all the beauties of America!</string>
 
-    <!--Attractions fragment-->
+    <!-- Attractions fragment -->
     <string name="attractions_label">Attractions</string>
     <string name="attractions_label_description">Find out more about this State!</string>
 
-    <!--Content descriptions-->
+    <!-- Content descriptions -->
     <string name="open_menu">Open menu</string>
 
-    <!--About app fragment-->
+    <!-- About app fragment -->
     <string name="description_first_paragraph">Are you planning a trip to the United States of America?
         Or do you just want to learn more about this beautiful country?
         \n\nWelcome to Travel Manager!
@@ -40,14 +40,19 @@
 
     <string name="i_got_it">I got it!</string>
 
-    <!--Choose theme dialog-->
+    <!-- Choose theme dialog -->
     <string name="choose_theme_dialog_title">Choose theme</string>
     <string name="light_theme">Light</string>
     <string name="dark_theme">Dark</string>
     <string name="system_default_theme">System default</string>
 
-    <!--Choose language dialog-->
+    <!-- Choose language dialog -->
     <string name="choose_language_dialog_title">Choose language</string>
     <string name="english_language">English</string>
     <string name="russian_language">Russian</string>
+
+    <!-- Description fragment -->
+    <string name="detail_basic_information_paragraph">Basic information</string>
+    <string name="detail_history_paragraph">History</string>
+    <string name="detail_location_paragraph">Location</string>
 </resources>

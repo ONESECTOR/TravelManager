@@ -16,30 +16,22 @@ import com.sector.travelmanager.adapters.RvAttractionsAdapter
 import com.sector.travelmanager.databinding.FragmentAttractionsBinding
 
 class AttractionsFragment : Fragment() {
-    private var _binding: FragmentAttractionsBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentAttractionsBinding
 
     private lateinit var rvAdapter: RvAttractionsAdapter
     private var attractionsList = ArrayList<Attraction>()
     private lateinit var dbRefAttraction: DatabaseReference
 
     private val args by navArgs<AttractionsFragmentArgs>()
-    private  var reference: String = ""
-
-    private lateinit var recyclerViewAdapter: RvAttractionsAdapter
+    private var reference: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAttractionsBinding.inflate(inflater, container, false)
+        binding = FragmentAttractionsBinding.inflate(inflater, container, false)
 
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 
@@ -85,13 +77,6 @@ class AttractionsFragment : Fragment() {
                     attractionsList = attractionsListTemp //It is made so that the elements in RecyclerView are not duplicated
 
                     rvAdapter = RvAttractionsAdapter(attractionsList)
-                    /*rvAdapter.listener =  object : RvAttractionsAdapter.ItemClickListener {
-                        override fun onItemClickListener(item: Attraction, imageView: ImageView) {
-                            val extras = FragmentNavigatorExtras(imageView to item.image)
-
-                            val action = AttractionsFragmentDirections.actionAttractionsFragmentToDescriptionFragment()
-                        }
-                    }*/
                     binding.rvAttractions.adapter = rvAdapter
                 }
             }

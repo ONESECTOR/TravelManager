@@ -13,8 +13,6 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_state.view.*
 
 class RvStatesAdapter(private var stateList: List<State>): RecyclerView.Adapter<RvStatesAdapter.MyViewHolder>() {
-    constructor(): this(emptyList())
-
     inner class MyViewHolder(val binding: ItemStateBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

@@ -11,7 +11,6 @@
         android:id="@+id/ivAttraction"
         android:layout_width="match_parent"
         android:layout_height="420dp"
-        android:background="@drawable/mountain_denali"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,9 +20,9 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/placeLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,16 +32,91 @@
             android:background="@color/background">
 
             <TextView
-                android:id="@+id/tvDescription"
+                android:id="@+id/mainParagraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/taylor_sans_regular"
-                android:padding="16dp"
-                android:text="Description fhdsjkjfhjdsfhdshfjdhgdsfkdsjfd. fdsjkgjfdfdjkjfhdjhjfhjdjhgjhkjhfjkgfdhgjkhkdhkjhfjhgjkkfgdkglkjkdfnjvnknjkfhuiyeriitierugjrfnkjrnfkjenjkfhgjkdfkghdfuighdfhgkdjfkkjkdfhjkhfjd"
-                android:textColor="@color/text_primary"
-                android:textSize="48sp"
+                android:text="@string/detail_basic_information_paragraph"
+                android:textColor="@color/text_secondary"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:fontFamily="@font/golos_regular"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvBasicInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/golos_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="16dp"
+                android:text="bla bla bla basic"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mainParagraph" />
+
+            <TextView
+                android:id="@+id/historyParagraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_history_paragraph"
+                android:textColor="@color/text_secondary"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:fontFamily="@font/golos_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvBasicInfo"/>
+
+            <TextView
+                android:id="@+id/tvHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/golos_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="16dp"
+                android:text="bla bla bla history"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/historyParagraph" />
+
+            <TextView
+                android:id="@+id/locationParagraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_location_paragraph"
+                android:textColor="@color/text_secondary"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:fontFamily="@font/golos_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHistory"/>
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/golos_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="16dp"
+                android:text="bla bla bla location"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/locationParagraph" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -61,13 +135,25 @@
             android:id="@+id/tvAttraction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/taylor_sans_bold"
+            android:fontFamily="@font/golos_semibold"
             android:padding="16dp"
             android:text="This place"
             android:textColor="@color/text_primary"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/golos_semibold"
+            android:padding="16dp"
+            android:textColor="@color/text_primary"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

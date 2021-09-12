@@ -7,8 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.NavigationUI
+import com.sector.travelmanager.R
+import com.sector.travelmanager.`object`.State
 import com.sector.travelmanager.databinding.FragmentDescriptionBinding
+import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
 import java.net.URL
@@ -18,7 +23,7 @@ class DescriptionFragment : Fragment() {
 
     private val args by navArgs<DescriptionFragmentArgs>()
 
-    val city = "volgograd, ru"
+    private lateinit var city: String
     val apiKey = "214dc88e981d47bfaaf90939ee82d9b4"
 
     override fun onCreateView(
@@ -40,7 +45,6 @@ class DescriptionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getArgs()
-
         WeatherTask().execute()
     }
 
@@ -58,18 +62,24 @@ class DescriptionFragment : Fragment() {
             val jsonObj = JSONObject(result!!)
             val main = jsonObj.getJSONObject("main")
 
-            val temp = main.getString("temp")+"°C"
+            val temp = main.getString("temp")
+            val newTemp = temp.substring(0, temp.length - 3) + "°C"
 
-            binding.tvTemperature.text = temp
+            binding.tvTemperature.text = newTemp
         }
     }
 
     private fun getArgs() {
         binding.apply {
             tvAttraction.text = args.currentAttraction.name
+            tvBasicInfo.text = args.currentAttraction.basicInformation
+            tvHistory.text = args.currentAttraction.history
+            tvLocation.text = args.currentAttraction.location
+            city = args.currentAttraction.city
 
             Picasso.with(requireContext())
                 .load(args.currentAttraction.image)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(ivAttraction)
         }
     }
