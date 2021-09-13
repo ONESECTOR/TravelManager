@@ -51,7 +51,7 @@
     <string name="english_language">English</string>
     <string name="russian_language">Russian</string>
 
-    <!-- Description fragment -->
+    <!-- Detail fragment -->
     <string name="detail_basic_information_paragraph">Basic information</string>
     <string name="detail_history_paragraph">History</string>
     <string name="detail_location_paragraph">Location</string>

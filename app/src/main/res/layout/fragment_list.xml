@@ -96,6 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:gravity="center"
+                android:fontFamily="@font/golos_regular"
                 android:text="@string/footer_text"
                 android:textColor="@color/text_primary"
                 app:layout_constraintBottom_toBottomOf="parent"

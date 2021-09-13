@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    app:layoutDescription="@xml/fragment_description_scene"
-    tools:context=".description.DescriptionFragment">
+    app:layoutDescription="@xml/fragment_detail_scene"
+    tools:context=".fragments.detail.DetailFragment">
 
     <ImageView
         android:id="@+id/ivAttraction"
@@ -128,7 +128,7 @@
         android:id="@+id/placeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/title_description_layout"
+        android:background="@drawable/title_detail_layout"
         app:layout_constraintBottom_toBottomOf="@+id/ivAttraction"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

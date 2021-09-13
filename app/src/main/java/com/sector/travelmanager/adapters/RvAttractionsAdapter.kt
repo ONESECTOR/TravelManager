@@ -8,7 +8,6 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.sector.travelmanager.R
 import com.sector.travelmanager.`object`.Attraction
-import com.sector.travelmanager.`object`.State
 import com.sector.travelmanager.fragments.attractions.AttractionsFragmentDirections
 import com.squareup.picasso.Callback
 import com.squareup.picasso.MemoryPolicy
@@ -49,7 +48,7 @@ class RvAttractionsAdapter(private var attractionsList: List<Attraction>): Recyc
                         itemView.ibAttraction to currentItem.image,
                         itemView.tvNameOfAttraction to currentItem.name)
 
-                    val action = AttractionsFragmentDirections.actionAttractionsFragmentToDescriptionFragment(currentItem)
+                    val action = AttractionsFragmentDirections.actionAttractionsFragmentToDetailFragment(currentItem)
                     itemView.findNavController().navigate(action, extras)
                 }
             }

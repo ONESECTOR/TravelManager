@@ -3,8 +3,8 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        motion:constraintSetEnd="@layout/fragment_description_motion_scene_end"
-        motion:constraintSetStart="@layout/fragment_description_motion_scene_start">
+        motion:constraintSetEnd="@layout/fragment_detail_motion_scene_end"
+        motion:constraintSetStart="@layout/fragment_detail_motion_scene_start">
         <OnSwipe
             motion:touchAnchorId="@+id/scrollView2"
             motion:touchRegionId="@+id/scrollView2"

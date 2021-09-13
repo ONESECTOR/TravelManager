@@ -1,4 +1,4 @@
-package com.sector.travelmanager.description
+package com.sector.travelmanager.fragments.detail
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -7,33 +7,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.NavigationUI
-import com.sector.travelmanager.R
-import com.sector.travelmanager.`object`.State
-import com.sector.travelmanager.databinding.FragmentDescriptionBinding
+import com.sector.travelmanager.databinding.FragmentDetailBinding
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
 import java.net.URL
 
-class DescriptionFragment : Fragment() {
-    private lateinit var binding: FragmentDescriptionBinding
+class DetailFragment : Fragment() {
+    private lateinit var binding: FragmentDetailBinding
 
-    private val args by navArgs<DescriptionFragmentArgs>()
+    private val args by navArgs<DetailFragmentArgs>()
 
     private lateinit var city: String
-    val apiKey = "214dc88e981d47bfaaf90939ee82d9b4"
+    val API_KEY = "214dc88e981d47bfaaf90939ee82d9b4"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDescriptionBinding.inflate(layoutInflater, container, false)
+        binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
 
-        val animation = TransitionInflater.from(requireContext()).inflateTransition(
-            android.R.transition.move)
+        val animation = TransitionInflater.from(requireContext())
+            .inflateTransition(
+                android.R.transition.move
+            )
 
         sharedElementEnterTransition = animation
         sharedElementReturnTransition = animation
@@ -51,7 +49,7 @@ class DescriptionFragment : Fragment() {
     inner class WeatherTask(): AsyncTask<String, Void, String>() {
         override fun doInBackground(vararg params: String?): String {
 
-            return URL("https://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&appid=$apiKey").readText(
+            return URL("https://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&appid=$API_KEY").readText(
                 Charsets.UTF_8
             )
         }

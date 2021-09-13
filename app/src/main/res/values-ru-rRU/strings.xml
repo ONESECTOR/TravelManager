@@ -47,7 +47,7 @@
     <string name="description_third_paragraph">С уважением, разработчик Travel Manager!</string>
     <string name="i_got_it">Понятно!</string>
 
-    <!-- Description fragment -->
+    <!-- Detail fragment -->
     <string name="detail_basic_information_paragraph">Основная информация</string>
     <string name="detail_history_paragraph">История</string>
     <string name="detail_location_paragraph">Расположение</string>
