@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import com.sector.travelmanager.R
 import com.sector.travelmanager.databinding.FragmentDetailBinding
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
@@ -63,7 +64,7 @@ class DetailFragment : Fragment() {
             val temp = main.getString("temp")
             val newTemp = temp.substring(0, temp.length - 3) + "°C"
 
-            binding.tvTemperature.text = newTemp
+            binding.tvTemperature.text = getString(R.string.temperature_now) + newTemp
         }
     }
 

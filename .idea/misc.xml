@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/button.xml" value="0.16905537459283387" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/dialog_background.xml" value="0.16905537459283387" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/dividing_line.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/ic_arrow_back.xml" value="0.2351851851851852" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.16905537459283387" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/drawable/ic_info.xml" value="0.16905537459283387" />
@@ -26,11 +27,12 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_description_motion_scene_start.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_detail.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_detail_motion_scene_end.xml" value="0.1" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_detail_motion_scene_start.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_first_tutorial.xml" value="0.176" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_list.xml" value="0.21516754850088182" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/fragment_splash_screen.xml" value="0.176" />
-        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/item_attraction.xml" value="0.16052631578947368" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/item_attraction.xml" value="0.4" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/item_state.xml" value="0.2" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/menu_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/TravelManager/app/src/main/res/layout/rv_attractions_list.xml" value="0.25416666666666665" />

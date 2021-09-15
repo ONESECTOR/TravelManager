@@ -42,12 +42,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/golos_semibold"
             android:textColor="@color/text_in_recyclerview"
             android:textSize="22sp"
             android:transitionName="text_attraction"
             app:layout_constraintStart_toStartOf="@id/ibAttraction"
-            app:layout_constraintTop_toBottomOf="@id/ibAttraction" />
+            app:layout_constraintTop_toBottomOf="@id/ibAttraction"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

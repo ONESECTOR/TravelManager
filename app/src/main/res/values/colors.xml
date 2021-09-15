@@ -14,6 +14,7 @@
     <color name="main_color">#121212</color>
     <color name="background">#ECECEC</color>
     <color name="card_view">#f0f0f0</color>
+    <color name="dividing_line">#121212</color>
 
     <!--Text colors-->
     <color name="text_primary">#121212</color>

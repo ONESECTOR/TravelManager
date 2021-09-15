@@ -1,6 +1,7 @@
 package com.sector.travelmanager.fragments.attractions
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,13 +15,15 @@ import com.sector.travelmanager.R
 import com.sector.travelmanager.`object`.Attraction
 import com.sector.travelmanager.adapters.RvAttractionsAdapter
 import com.sector.travelmanager.databinding.FragmentAttractionsBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AttractionsFragment : Fragment() {
     private lateinit var binding: FragmentAttractionsBinding
 
     private lateinit var rvAdapter: RvAttractionsAdapter
     private var attractionsList = ArrayList<Attraction>()
-    private lateinit var dbRefAttraction: DatabaseReference
+    private var dbRefAttraction: DatabaseReference? = null
 
     private val args by navArgs<AttractionsFragmentArgs>()
     private var reference: String = ""
@@ -41,8 +44,8 @@ class AttractionsFragment : Fragment() {
         binding.rvAttractions.layoutManager = LinearLayoutManager(requireContext())
 
         initDatabase()
-        getArgs(reference)
-        getCurrentState()
+        getArgs()
+        readFromDatabase()
 
         binding.btnBack.setOnClickListener {
             showListFragment()
@@ -53,7 +56,7 @@ class AttractionsFragment : Fragment() {
         findNavController().navigate(R.id.action_attractionsFragment_to_listFragment)
     }
 
-    private fun getArgs(reference: String) {
+    private fun getArgs() {
         this.reference = args.currentState.name
     }
 
@@ -61,10 +64,22 @@ class AttractionsFragment : Fragment() {
         FirebaseApp.initializeApp(requireContext())
     }
 
-    private fun getCurrentState() {
-        dbRefAttraction = FirebaseDatabase.getInstance().getReference("Attractions").child(reference)
+    private fun readFromDatabase() {
+        val language = Locale.getDefault().language
 
-        dbRefAttraction.addValueEventListener(object: ValueEventListener {
+        if (language == "ru") {
+            dbRefAttraction = FirebaseDatabase.getInstance()
+                .getReference("Attractions")
+                .child("ru")
+                .child(reference)
+        } else if (language == "en") {
+            dbRefAttraction = FirebaseDatabase.getInstance()
+                .getReference("Attractions")
+                .child("en")
+                .child(reference)
+        }
+
+        dbRefAttraction?.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val attractionsListTemp = ArrayList<Attraction>()

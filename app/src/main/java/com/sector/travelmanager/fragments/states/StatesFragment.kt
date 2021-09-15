@@ -20,6 +20,8 @@ import com.sector.travelmanager.databinding.FragmentListBinding
 import com.sector.travelmanager.preferences.ThemePreferences
 import android.os.Parcelable
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
+import java.util.*
 import kotlin.collections.ArrayList
 
 class StatesFragment : Fragment() {
@@ -31,7 +33,7 @@ class StatesFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private var lastPosition: Int? = null
 
-    private lateinit var state: Parcelable
+    private var state: Parcelable? = null
     private val mLayoutManager: LinearLayoutManager? = null
 
     override fun onCreateView(
@@ -49,13 +51,12 @@ class StatesFragment : Fragment() {
 
         checkTheme()
         initDatabase()
-        getStates()
+        readFromDatabase()
 
         binding.ibMenu.setOnClickListener {
             openMenu()
         }
-
-        // getLastPositionFromRecyclerView()
+        // restoreRecyclerViewState()
 
         /*binding.rvStates.addOnScrollListener(object: RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -71,7 +72,7 @@ class StatesFragment : Fragment() {
         binding.rvStates.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun getStates() {
+    private fun readFromDatabase() {
         databaseReferenceStates?.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -96,8 +97,15 @@ class StatesFragment : Fragment() {
     }
 
     private fun initDatabase() {
-        FirebaseApp.initializeApp(requireContext());
-        databaseReferenceStates = FirebaseDatabase.getInstance().getReference("States")
+        FirebaseApp.initializeApp(requireContext())
+
+        val language = Locale.getDefault().language
+
+        if (language == "ru") {
+            databaseReferenceStates = FirebaseDatabase.getInstance().getReference("States").child("ru")
+        } else if (language == "en") {
+            databaseReferenceStates = FirebaseDatabase.getInstance().getReference("States").child("en")
+        }
     }
 
     private fun openMenu() {
@@ -226,7 +234,7 @@ class StatesFragment : Fragment() {
     /*override fun onPause() {
         super.onPause()
 
-        saveStateOfRecyclerView()
+        saveRecyclerViewState()
     }
 
     override fun onDestroy() {
@@ -239,11 +247,7 @@ class StatesFragment : Fragment() {
         editor.apply()
     }*/
 
-    //fun saveRecyclerViewState(parcelable: Parcelable) { state = parcelable }
-    //fun restoreRecyclerViewState() : Parcelable = state
-    //fun stateInitialized() : Boolean = ::state.isInitialized
-
-    /*private fun saveStateOfRecyclerView() {
+    /*private fun saveRecyclerViewState() {
         val statePrefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val editor: SharedPreferences.Editor = statePrefs.edit()
 
