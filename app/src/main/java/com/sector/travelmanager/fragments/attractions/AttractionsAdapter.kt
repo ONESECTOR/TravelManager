@@ -1,4 +1,4 @@
-package com.sector.travelmanager.adapters
+package com.sector.travelmanager.fragments.attractions
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +8,12 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.sector.travelmanager.R
 import com.sector.travelmanager.`object`.Attraction
-import com.sector.travelmanager.fragments.attractions.AttractionsFragmentDirections
 import com.squareup.picasso.Callback
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_attraction.view.*
 
-class RvAttractionsAdapter(private var attractionsList: List<Attraction>): RecyclerView.Adapter<RvAttractionsAdapter.ViewHolder>() {
+class AttractionsAdapter(private var attractionsList: List<Attraction>): RecyclerView.Adapter<AttractionsAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 

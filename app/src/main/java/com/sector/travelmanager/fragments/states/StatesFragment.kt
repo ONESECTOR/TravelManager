@@ -15,19 +15,17 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import com.sector.travelmanager.R
 import com.sector.travelmanager.`object`.State
-import com.sector.travelmanager.adapters.RvStatesAdapter
 import com.sector.travelmanager.databinding.FragmentListBinding
 import com.sector.travelmanager.preferences.ThemePreferences
 import android.os.Parcelable
 import androidx.navigation.fragment.findNavController
-import androidx.preference.PreferenceManager
 import java.util.*
 import kotlin.collections.ArrayList
 
 class StatesFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
 
-    private lateinit var rvAdapter: RvStatesAdapter
+    private lateinit var rvAdapter: StatesAdapter
     private var statesList = ArrayList<State>()
     private var databaseReferenceStates: DatabaseReference? = null
     private lateinit var sharedPreferences: SharedPreferences
@@ -85,7 +83,7 @@ class StatesFragment : Fragment() {
                     }
 
                     statesList = stateListTemp
-                    rvAdapter = RvStatesAdapter(statesList)
+                    rvAdapter = StatesAdapter(statesList)
                     binding.rvStates.adapter = rvAdapter
                 }
             }

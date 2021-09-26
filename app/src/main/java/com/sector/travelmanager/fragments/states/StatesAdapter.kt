@@ -1,4 +1,4 @@
-package com.sector.travelmanager.adapters
+package com.sector.travelmanager.fragments.states
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +7,11 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sector.travelmanager.`object`.State
 import com.sector.travelmanager.databinding.ItemStateBinding
-import com.sector.travelmanager.fragments.states.StatesFragmentDirections
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_state.view.*
 
-class RvStatesAdapter(private var stateList: List<State>): RecyclerView.Adapter<RvStatesAdapter.MyViewHolder>() {
+class StatesAdapter(private var stateList: List<State>): RecyclerView.Adapter<StatesAdapter.MyViewHolder>() {
     inner class MyViewHolder(val binding: ItemStateBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

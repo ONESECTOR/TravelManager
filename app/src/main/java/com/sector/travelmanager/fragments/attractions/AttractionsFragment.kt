@@ -1,7 +1,6 @@
 package com.sector.travelmanager.fragments.attractions
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import com.sector.travelmanager.R
 import com.sector.travelmanager.`object`.Attraction
-import com.sector.travelmanager.adapters.RvAttractionsAdapter
 import com.sector.travelmanager.databinding.FragmentAttractionsBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -21,7 +19,7 @@ import kotlin.collections.ArrayList
 class AttractionsFragment : Fragment() {
     private lateinit var binding: FragmentAttractionsBinding
 
-    private lateinit var rvAdapter: RvAttractionsAdapter
+    private lateinit var rvAdapter: AttractionsAdapter
     private var attractionsList = ArrayList<Attraction>()
     private var dbRefAttraction: DatabaseReference? = null
 
@@ -91,7 +89,7 @@ class AttractionsFragment : Fragment() {
 
                     attractionsList = attractionsListTemp //It is made so that the elements in RecyclerView are not duplicated
 
-                    rvAdapter = RvAttractionsAdapter(attractionsList)
+                    rvAdapter = AttractionsAdapter(attractionsList)
                     binding.rvAttractions.adapter = rvAdapter
                 }
             }
