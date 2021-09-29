@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class Attraction(
+data class Attraction(
     val name: String = "",
     val image: String = "",
     val city: String = "",

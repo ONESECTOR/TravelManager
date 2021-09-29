@@ -1,7 +1,6 @@
 package com.sector.travelmanager.fragments.states
 
 import android.app.AlertDialog
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,29 +16,24 @@ import com.sector.travelmanager.R
 import com.sector.travelmanager.`object`.State
 import com.sector.travelmanager.databinding.FragmentListBinding
 import com.sector.travelmanager.preferences.ThemePreferences
-import android.os.Parcelable
 import androidx.navigation.fragment.findNavController
 import java.util.*
 import kotlin.collections.ArrayList
 
 class StatesFragment : Fragment() {
-    private lateinit var binding: FragmentListBinding
+    private var _binding: FragmentListBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var rvAdapter: StatesAdapter
-    private var statesList = ArrayList<State>()
     private var databaseReferenceStates: DatabaseReference? = null
-    private lateinit var sharedPreferences: SharedPreferences
-    private var lastPosition: Int? = null
-
-    private var state: Parcelable? = null
-    private val mLayoutManager: LinearLayoutManager? = null
+    private lateinit var adapter: StatesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentListBinding.inflate(inflater, container, false)
-        initLayout()
+        _binding = FragmentListBinding.inflate(inflater, container, false)
+
+        setupRecyclerView()
 
         return binding.root
     }
@@ -54,37 +48,27 @@ class StatesFragment : Fragment() {
         binding.ibMenu.setOnClickListener {
             openMenu()
         }
-        // restoreRecyclerViewState()
-
-        /*binding.rvStates.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-
-                lastPosition = (recyclerView.layoutManager as LinearLayoutManager?)!!.findFirstVisibleItemPosition()
-            }
-        })*/
-
     }
 
-    private fun initLayout() {
-        binding.rvStates.layoutManager = LinearLayoutManager(requireContext())
+    private fun setupRecyclerView() {
+        adapter = StatesAdapter()
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
     }
 
     private fun readFromDatabase() {
         databaseReferenceStates?.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val stateListTemp = ArrayList<State>()
+                    val list = ArrayList<State>()
 
                     for (stateSnapshot in snapshot.children) {
                         val state = stateSnapshot.getValue(State::class.java)
 
-                        stateListTemp.add(state!!)
+                        list.add(state!!)
                     }
 
-                    statesList = stateListTemp
-                    rvAdapter = StatesAdapter(statesList)
-                    binding.rvStates.adapter = rvAdapter
+                    adapter.submitList(list)
                 }
             }
 
@@ -97,12 +81,9 @@ class StatesFragment : Fragment() {
     private fun initDatabase() {
         FirebaseApp.initializeApp(requireContext())
 
-        val language = Locale.getDefault().language
-
-        if (language == "ru") {
-            databaseReferenceStates = FirebaseDatabase.getInstance().getReference("States").child("ru")
-        } else if (language == "en") {
-            databaseReferenceStates = FirebaseDatabase.getInstance().getReference("States").child("en")
+        when (Locale.getDefault().language) {
+            "ru" -> databaseReferenceStates = FirebaseDatabase.getInstance().getReference("States").child("ru")
+            "en" -> databaseReferenceStates = FirebaseDatabase.getInstance().getReference("States").child("en")
         }
     }
 
@@ -222,34 +203,8 @@ class StatesFragment : Fragment() {
         dialog.show()
     }
 
-    /*private fun getLastPositionFromRecyclerView() {
-        val statePrefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        lastPosition = statePrefs.getInt("lastPosition", 0)
-
-        (binding.rvStates.layoutManager as LinearLayoutManager?)!!.scrollToPosition(lastPosition!!)
-    }*/
-
-    /*override fun onPause() {
-        super.onPause()
-
-        saveRecyclerViewState()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        val statePrefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val editor: SharedPreferences.Editor = statePrefs.edit()
-
-        editor.putInt("lastPosition", 0)
-        editor.apply()
-    }*/
-
-    /*private fun saveRecyclerViewState() {
-        val statePrefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val editor: SharedPreferences.Editor = statePrefs.edit()
-
-        editor.putInt("lastPosition", lastPosition!!)
-        editor.apply()
-    }*/
 }

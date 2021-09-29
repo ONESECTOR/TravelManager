@@ -17,20 +17,21 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class AttractionsFragment : Fragment() {
-    private lateinit var binding: FragmentAttractionsBinding
+    private var _binding: FragmentAttractionsBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var rvAdapter: AttractionsAdapter
-    private var attractionsList = ArrayList<Attraction>()
     private var dbRefAttraction: DatabaseReference? = null
 
     private val args by navArgs<AttractionsFragmentArgs>()
-    private var reference: String = ""
+    private var reference: String? = null
+
+    private lateinit var adapter: AttractionsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAttractionsBinding.inflate(inflater, container, false)
+        _binding = FragmentAttractionsBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -39,8 +40,7 @@ class AttractionsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvAttractions.layoutManager = LinearLayoutManager(requireContext())
-
+        setupRecyclerView()
         initDatabase()
         getArgs()
         readFromDatabase()
@@ -50,12 +50,18 @@ class AttractionsFragment : Fragment() {
         }
     }
 
+    private fun setupRecyclerView() {
+        adapter = AttractionsAdapter()
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
+    }
+
     private fun showListFragment() {
         findNavController().navigate(R.id.action_attractionsFragment_to_listFragment)
     }
 
     private fun getArgs() {
-        this.reference = args.currentState.name
+        reference = args.currentState.name
     }
 
     private fun initDatabase() {
@@ -63,34 +69,33 @@ class AttractionsFragment : Fragment() {
     }
 
     private fun readFromDatabase() {
-        val language = Locale.getDefault().language
-
-        if (language == "ru") {
-            dbRefAttraction = FirebaseDatabase.getInstance()
-                .getReference("Attractions")
-                .child("ru")
-                .child(reference)
-        } else if (language == "en") {
-            dbRefAttraction = FirebaseDatabase.getInstance()
-                .getReference("Attractions")
-                .child("en")
-                .child(reference)
+        when (Locale.getDefault().language) {
+            "ru" -> {
+                dbRefAttraction = FirebaseDatabase.getInstance()
+                    .getReference("Attractions")
+                    .child("ru")
+                    .child(reference!!)
+            }
+            "en" -> {
+                dbRefAttraction = FirebaseDatabase.getInstance()
+                    .getReference("Attractions")
+                    .child("en")
+                    .child(reference!!)
+            }
         }
 
         dbRefAttraction?.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val attractionsListTemp = ArrayList<Attraction>()
+                    val list = ArrayList<Attraction>()
+
                     for (attractionSnapshot in snapshot.children) {
                         val attraction = attractionSnapshot.getValue(Attraction::class.java)
 
-                        attractionsListTemp.add(attraction!!)
+                        list.add(attraction!!)
                     }
 
-                    attractionsList = attractionsListTemp //It is made so that the elements in RecyclerView are not duplicated
-
-                    rvAdapter = AttractionsAdapter(attractionsList)
-                    binding.rvAttractions.adapter = rvAdapter
+                    adapter.submitList(list)
                 }
             }
 
@@ -98,5 +103,10 @@ class AttractionsFragment : Fragment() {
 
             }
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

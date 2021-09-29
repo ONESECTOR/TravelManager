@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.sector.travelmanager.R
 import com.sector.travelmanager.databinding.FragmentDetailBinding
@@ -45,6 +46,10 @@ class DetailFragment : Fragment() {
 
         getArgs()
         WeatherTask().execute()
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_detailFragment_to_attractionsFragment)
+        }
     }
 
     inner class WeatherTask(): AsyncTask<String, Void, String>() {
