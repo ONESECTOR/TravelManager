@@ -1,5 +1,6 @@
 package com.sector.travelmanager.fragments.detail
 
+import android.app.ActionBar
 import android.os.AsyncTask
 import android.os.Bundle
 import android.transition.TransitionInflater
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.sector.travelmanager.R
@@ -22,13 +24,14 @@ class DetailFragment : Fragment() {
     private val args by navArgs<DetailFragmentArgs>()
 
     private lateinit var city: String
-    val API_KEY = "214dc88e981d47bfaaf90939ee82d9b4"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
+
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
 
         val animation = TransitionInflater.from(requireContext())
             .inflateTransition(
@@ -48,8 +51,12 @@ class DetailFragment : Fragment() {
         WeatherTask().execute()
 
         binding.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_detailFragment_to_attractionsFragment)
+            activity?.onBackPressed()
         }
+    }
+
+    companion object {
+        const val API_KEY = "214dc88e981d47bfaaf90939ee82d9b4"
     }
 
     inner class WeatherTask(): AsyncTask<String, Void, String>() {

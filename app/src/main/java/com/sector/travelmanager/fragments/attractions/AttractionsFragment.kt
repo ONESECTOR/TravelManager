@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +34,8 @@ class AttractionsFragment : Fragment() {
     ): View {
         _binding = FragmentAttractionsBinding.inflate(inflater, container, false)
 
+        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+
         return binding.root
     }
 
@@ -46,7 +49,7 @@ class AttractionsFragment : Fragment() {
         readFromDatabase()
 
         binding.btnBack.setOnClickListener {
-            showListFragment()
+            activity?.onBackPressed()
         }
     }
 
@@ -54,10 +57,6 @@ class AttractionsFragment : Fragment() {
         adapter = AttractionsAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
-    }
-
-    private fun showListFragment() {
-        findNavController().navigate(R.id.action_attractionsFragment_to_listFragment)
     }
 
     private fun getArgs() {

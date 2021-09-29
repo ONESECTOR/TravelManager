@@ -28,4 +28,8 @@
     <!--Widgets colors-->
     <color name="button">#121212</color>
     <color name="progress_bar">#121212</color>
+
+    <!-- Round button -->
+    <color name="button_background">#ECECEC</color>
+    <color name="button_inner_icon">#121212</color>
 </resources>

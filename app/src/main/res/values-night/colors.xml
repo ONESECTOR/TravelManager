@@ -18,4 +18,8 @@
     <!--Menu colors-->
     <color name="menu_header">#ECECEC</color>
     <color name="background_menu">#121211</color>
+
+    <!-- Round button -->
+    <color name="button_background">#121212</color>
+    <color name="button_inner_icon">#ECECEC</color>
 </resources>
